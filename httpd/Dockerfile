@@ -38,14 +38,15 @@ RUN set -x \
 # add example directives to main httpd configuration
 RUN proxyLoadLine="$(grep -nE "^#?LoadModule proxy_module" conf/httpd.conf | tail -1 | cut -d':' -f1)" \
   && sed -i \
-       -e "${proxyLoadLine}a#LoadModule proxy_cluster_module modules/mod_proxy_cluster.so" \
-       -e "${proxyLoadLine}a#LoadModule advertise_module modules/mod_advertise.so" \
-       -e "${proxyLoadLine}a#LoadModule manager_module modules/mod_manager.so" \
-       -e "${proxyLoadLine}a#LoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so" \
+       -e "${proxyLoadLine}aLoadModule proxy_module modules/mod_proxy.so" \
+       -e "${proxyLoadLine}aLoadModule proxy_cluster_module modules/mod_proxy_cluster.so" \
+       -e "${proxyLoadLine}aLoadModule advertise_module modules/mod_advertise.so" \
+       -e "${proxyLoadLine}aLoadModule manager_module modules/mod_manager.so" \
+       -e "${proxyLoadLine}aLoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so" \
        conf/httpd.conf \
   && sed -i \
        -e "\$a# Proxy using mod_cluster" \
-       -e "\$a#Include conf/extra/proxy-cluster.conf\n" \
+       -e "\$aInclude conf/extra/proxy-cluster.conf\n" \
        conf/httpd.conf
 
 # add sample configuration
