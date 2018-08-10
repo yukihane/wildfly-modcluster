@@ -1,12 +1,16 @@
 version: '3'
 services:
-  wildfly1:
-    image: jboss/wildfly:13.0.0.Final
+  httpd:
+    build: ./httpd
     ports:
-      - "8080:8080"
-      - "9990:9990"
-  wildfly2:
+      - "8080:80"
+  wildfly1:
     image: jboss/wildfly:13.0.0.Final
     ports:
       - "8081:8080"
       - "9991:9990"
+  wildfly2:
+    image: jboss/wildfly:13.0.0.Final
+    ports:
+      - "8082:8080"
+      - "9992:9990"
