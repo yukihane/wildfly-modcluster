@@ -52,3 +52,4 @@ RUN proxyLoadLine="$(grep -nE "^#?LoadModule proxy_module" conf/httpd.conf | tai
 
 # add sample configuration
 COPY proxy-cluster.conf conf/extra
+COPY httpd-vhosts.conf conf/extra

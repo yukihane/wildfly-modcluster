@@ -4,6 +4,7 @@ services:
     build: ./httpd
     ports:
       - "8080:80"
+      - "6666:6666"
     networks:
       mynetwork:
         ipv4_address: 10.0.0.11
