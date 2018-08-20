@@ -16,6 +16,7 @@ RUN set -x \
      " \
   && apt-get update \
   && apt-get install -y --no-install-recommends -V $buildDeps \
+  && apt-get install -y curl \
   && rm -r /var/lib/apt/lists/* \
   && cd /tmp \
   && wget https://github.com/modcluster/mod_cluster/archive/"$MOD_CLUSTER_VERSION".tar.gz -O mod_cluster.tgz \
