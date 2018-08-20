@@ -44,6 +44,7 @@ RUN proxyLoadLine="$(grep -nE "^#?LoadModule proxy_module" conf/httpd.conf | tai
        -e "${proxyLoadLine}aLoadModule advertise_module modules/mod_advertise.so" \
        -e "${proxyLoadLine}aLoadModule manager_module modules/mod_manager.so" \
        -e "${proxyLoadLine}aLoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so" \
+       -e "${proxyLoadLine}aLoadModule proxy_ajp_module modules/mod_proxy_ajp.so" \
        conf/httpd.conf \
   && sed -i \
        -e "\$a# Proxy using mod_cluster" \
