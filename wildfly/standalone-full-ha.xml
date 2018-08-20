@@ -354,8 +354,14 @@
                     <transaction mode="BATCH"/>
                 </replicated-cache>
             </cache-container>
-            <cache-container name="web" default-cache="dist" module="org.wildfly.clustering.web.infinispan">
+            <cache-container name="web" default-cache="repli" module="org.wildfly.clustering.web.infinispan">
                 <transport lock-timeout="60000"/>
+                <replicated-cache name="repli" remote-timeout="330000">
+                    <locking acquire-timeout="330000" concurrency-level="500" striping="false"/>
+                    <transaction mode="BATCH"/>
+                    <object-memory size="-1"/>
+                    <expiration max-idle="-1"/>
+                </replicated-cache>
                 <distributed-cache name="dist">
                     <locking isolation="REPEATABLE_READ"/>
                     <transaction mode="BATCH"/>
