@@ -10,7 +10,7 @@ services:
         ipv4_address: 10.0.0.11
   wildfly1:
     image: yuki/wildfly
-    command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.21 -bmanagement 10.0.0.21
+    command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.21 -bmanagement 10.0.0.21 -Djboss.node.name=node21
     volumes:
       - "$PWD/wildfly/deployments21:/opt/jboss/wildfly/standalone/deployments"
     ports:
@@ -21,7 +21,7 @@ services:
         ipv4_address: 10.0.0.21
   wildfly2:
     image: yuki/wildfly
-    command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.22 -bmanagement 10.0.0.22
+    command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.22 -bmanagement 10.0.0.22 -Djboss.node.name=node22
     volumes:
       - "$PWD/wildfly/deployments22:/opt/jboss/wildfly/standalone/deployments"
     ports:
