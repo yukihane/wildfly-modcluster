@@ -9,7 +9,7 @@ services:
       mynetwork:
         ipv4_address: 10.0.0.11
   wildfly1:
-    image: jboss/wildfly:13.0.0.Final
+    image: yuki/wildfly
     command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.21 -bmanagement 10.0.0.21
     volumes:
       - "$PWD/wildfly/deployments21:/opt/jboss/wildfly/standalone/deployments"
@@ -20,7 +20,7 @@ services:
       mynetwork:
         ipv4_address: 10.0.0.21
   wildfly2:
-    image: jboss/wildfly:13.0.0.Final
+    image: yuki/wildfly
     command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.22 -bmanagement 10.0.0.22
     volumes:
       - "$PWD/wildfly/deployments22:/opt/jboss/wildfly/standalone/deployments"
