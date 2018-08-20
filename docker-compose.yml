@@ -11,6 +11,8 @@ services:
   wildfly1:
     image: jboss/wildfly:13.0.0.Final
     command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.21 -bmanagement 10.0.0.21
+    volumes:
+      - "$PWD/wildfly/deployments21:/opt/jboss/wildfly/standalone/deployments"
     ports:
       - "8081:8080"
       - "9991:9990"
@@ -20,6 +22,8 @@ services:
   wildfly2:
     image: jboss/wildfly:13.0.0.Final
     command: /opt/jboss/wildfly/bin/standalone.sh -c standalone-full-ha.xml -b 10.0.0.22 -bmanagement 10.0.0.22
+    volumes:
+      - "$PWD/wildfly/deployments22:/opt/jboss/wildfly/standalone/deployments"
     ports:
       - "8082:8080"
       - "9992:9990"
